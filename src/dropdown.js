@@ -2,6 +2,13 @@ import React, { Component } from 'react'
 
 class Dropdown extends Component {
   render() {
+    const output = this.props.names.map((e) => {
+        return <li key={e}>
+                    <a href="#">
+                        {e[1]}
+                    </a>
+                </li>
+    });
     return (
       <div className={this.props.dropdownActive ? "dropdown pull-right open" : "dropdown pull-right" }>
         <div className="sort-items" onClick={this.props.toggle}>
@@ -9,8 +16,9 @@ class Dropdown extends Component {
             <span className="caret"></span>
         </div>
         <ul className="dropdown-menu">
-                sss<br></br>
-                
+            {output}
+            <hr/>
+            
         </ul>
       </div>
     )

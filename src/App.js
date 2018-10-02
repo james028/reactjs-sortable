@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Dropdown from './dropdown'
+import Person from './person'
 
 class App extends Component {
   constructor() {
@@ -8,7 +9,8 @@ class App extends Component {
 
     this.state = {
       dataArray: data,
-      dropdownActive : true
+      dropdownActive : true,
+      names: names
     };
   }
 
@@ -28,7 +30,13 @@ class App extends Component {
               <h3>React - sortable list</h3>
               <Dropdown 
                 dropdownActive={this.state.dropdownActive}
-                toggle={this.toggleDropdown}/>
+                toggle={this.toggleDropdown}
+                names={this.state.names}/>
+                {this.state.dataArray.map((item, key) => {
+                  return <Person 
+                  key={key}
+                  data={item}/>
+                })}
             </div>
           </div>
         </div>
