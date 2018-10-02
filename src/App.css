@@ -1,0 +1,17 @@
+body {
+  background-color: darkslategray;
+}
+.sort-items {
+  padding : 14px;
+  background-color: cadetblue;
+  color: #fff;
+  width: 150px;
+}
+.dropdown-menu {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+}
+.open>.dropdown-menu {
+  display: block;
+}
