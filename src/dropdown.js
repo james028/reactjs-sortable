@@ -10,17 +10,17 @@ class Dropdown extends Component {
                 </li>
     });
     return (
-      <div className={this.props.dropdownActive ? "dropdown pull-right open" : "dropdown pull-right" }>
-        <div className="sort-items" onClick={this.props.toggle}>
-            Sort items by
-            <span className="caret"></span>
-        </div>
-        <ul className="dropdown-menu">
-            {output}
-            <hr/>
-            
-        </ul>
-      </div>
+          <div className={this.props.dropdownActive ? "dropdown pull-right open" : "dropdown pull-right" }>
+            <div className="sort-items" onClick={this.props.toggle}>
+                Sort items by
+            </div>
+            <ul className="dropdown-menu">
+                {output}
+                <hr/>
+                <li><a href="#" onClick={this.props.doOrder}>ascending</a></li>
+                <li><a href="#" onClick={this.props.doOrder}>descending</a></li>
+            </ul>
+          </div>
     )
   }
 }

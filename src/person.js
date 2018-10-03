@@ -12,7 +12,8 @@ class Person extends Component {
                     </div>
                 </div>
                 <div className="col-md-8">
-                    <div>{this.props.data.first_name} {this.props.data.last_name}</div>
+                    <div className={this.props.orderBy === "first_name" ? "active" : null }>{this.props.data.first_name} </div>
+                    <div>{this.props.data.last_name}</div>
                 </div>
             </div>
         </div>

@@ -10,18 +10,51 @@ class App extends Component {
     this.state = {
       dataArray: data,
       dropdownActive : true,
-      names: names
+      names: names,
+      orderBy: 'first_name',
+      order: 'asc'
     };
   }
 
-  toggleDropdown = () => {
+  toggleDropdown = (e) => {
+    e.preventDefault();
     this.setState({
       dropdownActive: !this.state.dropdownActive
     })
   }
 
+  doOrderBy = (e) => {
+    e.preventDefault();
+      const newOrderBy = e.target.getAttribute('data-value');
+      this.setState({
+          orderBy: newOrderBy
+      })
+  }
+
+  doOrder = (e) => {
+    e.preventDefault();
+    const newOrder = e.target.getAttribute('data-value');
+    this.setState({
+      order: newOrder
+    })
+  }
+
 
   render() {
+
+    let sorted = this.state.data;
+
+    sorted = [](sorted, (e) => {
+      return e[this.state.orderBy]
+    }, this.state.order);
+
+    const items = sorted.map((e) => {
+        return <Person 
+                  key={e.id} 
+                  data={e} 
+                  orderBy={this.state.orderBy}/>
+    });
+
     return (
       <div className="App">
         <div className="container">
@@ -31,12 +64,12 @@ class App extends Component {
               <Dropdown 
                 dropdownActive={this.state.dropdownActive}
                 toggle={this.toggleDropdown}
-                names={this.state.names}/>
-                {this.state.dataArray.map((item, key) => {
-                  return <Person 
-                  key={key}
-                  data={item}/>
-                })}
+                names={this.state.names}
+                order={this.state.order}
+                doOrder={this.doOrder}
+                orderBy={this.state.orderBy}
+                doOrderBy={this.doOrderBy}/>
+                  {items}
             </div>
           </div>
         </div>
