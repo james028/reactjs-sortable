@@ -12,7 +12,9 @@ class App extends Component {
       dropdownActive : true,
       names: names,
       orderBy: 'first_name',
-      order: 'asc'
+      order: 'asc',
+      categories: categories,
+      name: 'test'
     };
   }
 
@@ -42,18 +44,11 @@ class App extends Component {
 
   render() {
 
-    let sorted = this.state.data;
-
-    sorted = [](sorted, (e) => {
-      return e[this.state.orderBy]
-    }, this.state.order);
-
-    const items = sorted.map((e) => {
-        return <Person 
-                  key={e.id} 
-                  data={e} 
-                  orderBy={this.state.orderBy}/>
-    });
+    
+    
+        
+    
+   
 
     return (
       <div className="App">
@@ -68,8 +63,12 @@ class App extends Component {
                 order={this.state.order}
                 doOrder={this.doOrder}
                 orderBy={this.state.orderBy}
-                doOrderBy={this.doOrderBy}/>
-                  {items}
+                doOrderBy={this.doOrderBy}
+                namesy={this.state.name}/>
+                {this.state.dataArray.map((e) => {
+                  return <p>{e.last_name}</p>
+                })}
+              <Person data={this.state.dataArray} orderBy={this.state.orderBy} categories={this.state.categories}/>    
             </div>
           </div>
         </div>
